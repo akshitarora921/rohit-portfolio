@@ -37,13 +37,24 @@ function Experience({
           </Text>
         </Flex>
       </Flex>
-      <Flex>
-        <Text color="current" fontSize="16px" mb="1" fontWeight="600">
+      <Flex flexDirection={{ base: 'column', md: 'row' }}>
+        <Text
+          color="current"
+          fontSize={{ base: '14px', md: '16px' }}
+          mb="1"
+          fontWeight="600"
+        >
           {title}
         </Text>
+        <Text display={{ base: 'none', md: 'block' }}>{',\xa0'}</Text>
         {company && (
-          <Text color="current" fontSize="16px" mb="1" fontWeight="300">
-            , {company}
+          <Text
+            color="current"
+            fontSize={{ base: '13px', md: '16px' }}
+            mb="1"
+            fontWeight="300"
+          >
+            {company}
           </Text>
         )}
       </Flex>

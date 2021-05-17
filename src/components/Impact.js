@@ -35,7 +35,12 @@ function Impact({ title }) {
         </Text>
       </Flex> */}
       <Icon as={GoPrimitiveDot} h="6" w="6" color="blue.500" />
-      <Text color="current" fontSize="16px" ml="2" fontWeight="500">
+      <Text
+        color="current"
+        fontSize={{ base: '14px', md: '16px' }}
+        ml="2"
+        fontWeight="500"
+      >
         {title}
       </Text>
       {/* <Text color="#666666" fontSize="12px" fontWeight="300">

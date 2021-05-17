@@ -1,26 +1,40 @@
 import { Image } from '@chakra-ui/image';
+import { Link } from '@chakra-ui/layout';
 import { Box } from '@chakra-ui/layout';
 import { Text } from '@chakra-ui/layout';
 import React from 'react';
 
-function Cards({ title, imageUrl, projectUrl, tags }) {
+function Cards({ data }) {
   return (
     <Box
-      boxShadow="0px 1px 4px 0px rgba(0,0,0,.1)"
-      transition="all .2s ease-in-out"
-      rounded="2xl"
-      _hover={{ transform: 'scale(1.02)' }}
+      as={Link}
+      isExternal
+      href={data.link}
+      boxShadow="xl"
       position="relative"
-      m="3"
+      // m="3"
+      my="3"
+      w={{ base: '100%', md: '44vw' }}
+      overflow="hidden"
+      backgroundColor="white"
+      rounded="2xl"
+      textDecoration="none"
+      _hover={{ textDecoration: 'none' }}
     >
       <Image
-        src={imageUrl}
-        w="370px"
-        objectFit="contain"
+        src={
+          'https://i.postimg.cc/tJ5BDxQR/Fire-Shot-Capture-006-Netflix-clone-netflix-clone-57636.png'
+          // 'https://picsum.photos/200/200'
+        }
+        // w="30em"
+        w={{ base: '', md: '44vw' }}
+        h="17em"
+        // objectFit="contain"
         backgroundSize="cover"
-        rounded="2xl"
         backgroundPosition="center"
-        transition="scale(1.1) .5sec ease-in-out"
+        // transition="scale(1.1) .5sec ease-in-out"
+        transition="all .2s ease-in-out"
+        _hover={{ transform: 'scale(1.02)' }}
       />
       <Text
         color="current"
@@ -31,24 +45,13 @@ function Cards({ title, imageUrl, projectUrl, tags }) {
         p="1"
         position="absolute"
         top="4"
-        left="4"
+        mx="4"
         rounded="md"
       >
-        {title}
+        {data.title}
       </Text>
-      <Text
-        color="current"
-        fontSize="13px"
-        fontWeight="400"
-        backgroundColor="white"
-        boxShadow="xl"
-        p="1"
-        position="absolute"
-        bottom="4"
-        left="4"
-        rounded="md"
-      >
-        {tags.join(', ')}
+      <Text color="current" fontSize="13px" fontWeight="400" px="3" py="2">
+        {data.description}
       </Text>
     </Box>
   );

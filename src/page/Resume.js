@@ -16,7 +16,6 @@ function Resume() {
       .doc('resume')
       .onSnapshot(snapshot => setData(snapshot.data()));
   }, []);
-  console.log(data);
   return (
     <>
       <Box
@@ -44,15 +43,15 @@ function Resume() {
       </Box>
       <Flex px="6" flexDir="column">
         <CustomHeading title="Impacts" />
-        <Box px="16" py="4">
+        <Box px={{ base: '2', md: '16' }} py="4">
           {data?.impact?.value?.map((d, index) => (
             <Impact title={d} />
           ))}
         </Box>
       </Flex>
 
-      <Flex p="6" flexDirection={{ base: 'column', md: 'row' }}>
-        <Box flex="50%">
+      <Flex p="6" flexDirection={{ base: 'column-reverse', md: 'row' }}>
+        <Flex mt={{ base: 8, md: 0 }} flexDirection="column" flex="50%">
           <CustomHeading title="Education" />
           <Box mt="4" px={{ base: '2', md: '12' }}>
             {data?.education?.map((d, index) => (
@@ -66,14 +65,15 @@ function Resume() {
               />
             ))}
           </Box>
+
           <CustomHeading title="Certifications" />
-          <Box px="16" py="4">
+          <Box px={{ base: '2', md: '16' }} py="4">
             {data?.certifications?.map((d, index) => (
               <Certification data={d} />
             ))}
           </Box>
-        </Box>
-        <Box mt={{ base: 8, md: 0 }} flex="50%">
+        </Flex>
+        <Box flex="50%">
           <CustomHeading title="Experience" />
           <Box mt="4" px={{ base: '2', md: '12' }}>
             {data?.experience?.workExperience

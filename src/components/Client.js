@@ -15,7 +15,7 @@ function Client({ index, data }) {
       {/* <Link> */}
       <Image
         src={data.imageLink}
-        filter="grayscale(90%)"
+        // filter="grayscale(90%)"
         my="auto"
         maxW="150px"
       />

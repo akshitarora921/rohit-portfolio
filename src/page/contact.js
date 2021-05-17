@@ -21,6 +21,12 @@ function Contact() {
   const [catchaVerified, setCaptchaVerified] = useState(false);
   const captcha = useRef();
   const toast = useToast();
+  const [data, setData] = useState({});
+  useEffect(() => {
+    db.collection('web')
+      .doc('contactMe')
+      .onSnapshot(snapshot => setData(snapshot.data()));
+  }, []);
   // useEffect(() => {
   //   db.collection('Contacts')
   //     .orderBy('timestamp', 'desc')
@@ -125,19 +131,19 @@ function Contact() {
           <Flex align="center">
             <Icon as={AiOutlineMobile} w={10} h={10} color="green.500" />
             <Text color="current" fontSize="16px" ml="5" fontWeight="600">
-              123 - 123 - 1234
+              {data.contactNumber}
             </Text>
           </Flex>
           <Flex align="center">
             <Icon as={GoLocation} w={10} h={10} color="green.500" />
             <Text color="current" fontSize="16px" ml="5" fontWeight="600">
-              Bangalore, India.
+              {data.location}
             </Text>
           </Flex>
           <Flex align="center">
             <Icon as={MdMailOutline} w={10} h={10} color="green.500" />
             <Text color="current" fontSize="16px" ml="5" fontWeight="600">
-              rohity821@gmail.com
+              {data.email}
             </Text>
           </Flex>
         </Stack>

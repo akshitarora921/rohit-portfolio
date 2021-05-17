@@ -8,7 +8,7 @@ import { BiCoffeeTogo } from 'react-icons/bi';
 import { FiCodepen } from 'react-icons/fi';
 import { SiXcode } from 'react-icons/si';
 import { AiOutlineApple } from 'react-icons/ai';
-import { IoIosPhonePortrait } from 'react-icons/io';
+import { IoIosPhonePortrait, IoIosWatch } from 'react-icons/io';
 import { IoHourglassOutline } from 'react-icons/io5';
 import Testimonial from '../components/Testimonial';
 import FunFact from '../components/FunFact';
@@ -25,6 +25,7 @@ function Home() {
   const icons = [
     AiOutlineApple,
     SiXcode,
+    IoIosWatch,
     BsCode,
     BsPencil,
     FiCodepen,
@@ -66,14 +67,14 @@ function Home() {
     <Box>
       <Header data={home} />
       <CustomHeading title="What I do" />
-      <Box mx={{ base: '2', md: '24' }} my="4">
+      <Box mx={{ base: '2', md: '24' }} my={{ base: '0', md: '4' }}>
         <Flex flexDirection={{ base: 'column', md: 'row' }} flexWrap="wrap">
           {whatIDo.map((data, index) => (
             <WhatIDo
               index={index}
               icon={icons[index]}
               heading={data.title}
-              content={data.description}
+              // content={data.description}
             />
           ))}
         </Flex>
@@ -93,7 +94,7 @@ function Home() {
         />
       </Box>
 
-      <CustomHeading title="Clients" />
+      <CustomHeading title="Worked for" />
       <Box
         mt="4"
         mx={{ base: '2', md: 'auto' }}

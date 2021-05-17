@@ -1,11 +1,26 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Image } from '@chakra-ui/image';
 import { Flex } from '@chakra-ui/layout';
 import { Box, Text } from '@chakra-ui/layout';
 import Cards from '../components/Cards';
+import { db } from '../firebase';
 
-function Portfolio({ title = 'Aksihtr', tags = 'asjfasdf' }) {
-  const [activeTag, setActiceTag] = useState('');
+function order(a, b) {
+  // console.log(a.description);
+  return a.description.length < b.description.length
+    ? -1
+    : a.description.length < b.description.length
+    ? 1
+    : 0;
+}
+function Portfolio() {
+  const [data, setData] = useState({});
+  useEffect(() => {
+    db.collection('web')
+      .doc('portfolio')
+      .onSnapshot(snapshot => setData(snapshot.data()));
+  }, []);
+  console.log(data);
   return (
     <>
       <Box
@@ -21,7 +36,7 @@ function Portfolio({ title = 'Aksihtr', tags = 'asjfasdf' }) {
           Portfolio
         </Text>
       </Box>
-      <Flex justify="flex-end" p="2" w="100%">
+      {/* <Flex justify="flex-end" p="2" w="100%">
         <Text color="current" fontSize="12px" fontWeight="300" px="3">
           ios
         </Text>
@@ -34,33 +49,18 @@ function Portfolio({ title = 'Aksihtr', tags = 'asjfasdf' }) {
         <Text color="current" fontSize="12px" fontWeight="300" px="3">
           game
         </Text>
-      </Flex>
+      </Flex> */}
       <Flex
         justifyContent="space-between"
-        align="center"
+        // align="center"
         wrap="wrap"
+        flexDirection={{ base: 'column', md: 'row' }}
         px={{ base: '2', md: '12' }}
+        mx="2"
       >
-        <Cards
-          title="Project 1"
-          imageUrl="https://picsum.photos/200/200"
-          tags={['ios', 'design']}
-        />
-        <Cards
-          title="Project 1"
-          imageUrl="https://picsum.photos/200/200"
-          tags={['ios', 'design']}
-        />
-        <Cards
-          title="Project 1"
-          imageUrl="https://picsum.photos/200/200"
-          tags={['ios', 'design']}
-        />
-        <Cards
-          title="Project 1"
-          imageUrl="https://picsum.photos/200/200"
-          tags={['ios', 'design']}
-        />
+        {data?.applications?.sort(order).map((app, index) => (
+          <Cards data={app} />
+        ))}
       </Flex>
     </>
   );
