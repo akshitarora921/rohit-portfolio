@@ -3,7 +3,14 @@ import { Flex } from '@chakra-ui/layout';
 import { Text } from '@chakra-ui/layout';
 import React from 'react';
 
-function Experience({ startYear, endYear, location, title, description }) {
+function Experience({
+  startYear,
+  endYear,
+  company,
+  location,
+  title,
+  description,
+}) {
   return (
     <Box
       ml="4"
@@ -29,12 +36,19 @@ function Experience({ startYear, endYear, location, title, description }) {
             - {endYear}
           </Text>
         </Flex>
-        <Text color="current" ml="3" fontSize="13px" fontWeight="300">
-          {location}
-        </Text>
       </Flex>
-      <Text color="current" fontSize="16px" mb="1" fontWeight="600">
-        {title}
+      <Flex>
+        <Text color="current" fontSize="16px" mb="1" fontWeight="600">
+          {title}
+        </Text>
+        {company && (
+          <Text color="current" fontSize="16px" mb="1" fontWeight="300">
+            , {company}
+          </Text>
+        )}
+      </Flex>
+      <Text color="current" fontSize="13px" fontWeight="300">
+        {location}
       </Text>
       <Text color="#666666" fontSize="12px" fontWeight="300">
         {description}

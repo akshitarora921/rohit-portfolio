@@ -2,6 +2,7 @@ import { localStorageManager } from '@chakra-ui/color-mode';
 import { Flex } from '@chakra-ui/layout';
 import { Box, Text } from '@chakra-ui/layout';
 import React, { useEffect, useState } from 'react';
+import Certification from '../components/Certification';
 import CustomHeading from '../components/CustomHeading';
 import Experience from '../components/Experience';
 import Impact from '../components/Impact';
@@ -43,9 +44,11 @@ function Resume() {
       </Box>
       <Flex px="6" flexDir="column">
         <CustomHeading title="Impacts" />
-        {data?.impact?.value?.map((d, index) => (
-          <Impact title={d} />
-        ))}
+        <Box px="16" py="4">
+          {data?.impact?.value?.map((d, index) => (
+            <Impact title={d} />
+          ))}
+        </Box>
       </Flex>
 
       <Flex p="6" flexDirection={{ base: 'column', md: 'row' }}>
@@ -58,31 +61,37 @@ function Resume() {
                 // endYear="2021"
                 location={d.university}
                 title={d.degree}
-                description={d.college}
+                company={d.college}
+                description={'Percentage: ' + d.percentage + '%'}
               />
+            ))}
+          </Box>
+          <CustomHeading title="Certifications" />
+          <Box px="16" py="4">
+            {data?.certifications?.map((d, index) => (
+              <Certification data={d} />
             ))}
           </Box>
         </Box>
         <Box mt={{ base: 8, md: 0 }} flex="50%">
           <CustomHeading title="Experience" />
           <Box mt="4" px={{ base: '2', md: '12' }}>
-            <Experience
-              startYear="2020"
-              endYear="2021"
-              location="Delhi, Haryana"
-              title="IOS developer"
-              description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus ad blanditiis, qui ipsum odit laudantium repudiandae amet explicabo dolorem dolore vero illo dignissimos neque doloremque iure numquam fugiat aliquam ab?"
-            />
-            <Experience
-              startYear="2020"
-              endYear="2021"
-              location="Delhi, Haryana"
-              title="IOS developer"
-              description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus ad blanditiis, qui ipsum odit laudantium repudiandae amet explicabo dolorem dolore vero illo dignissimos neque doloremque iure numquam fugiat aliquam ab?"
-            />
+            {data?.experience?.workExperience
+              ?.slice(0)
+              .reverse()
+              .map((exp, index) => (
+                <Experience
+                  startYear={exp.start}
+                  endYear={exp.end}
+                  company={exp.company}
+                  title={exp.position}
+                  description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus ad blanditiis, qui ipsum odit laudantium repudiandae amet explicabo dolorem dolore vero illo dignissimos neque doloremque iure numquam fugiat aliquam ab?"
+                />
+              ))}
           </Box>
         </Box>
       </Flex>
+      <Flex px="6" flexDir="column"></Flex>
       <CustomHeading title="Skills" />
       <Flex
         px="12"
