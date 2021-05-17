@@ -1,14 +1,27 @@
-import { ColorModeScript } from '@chakra-ui/react';
+import { ChakraProvider, ColorModeScript } from '@chakra-ui/react';
 import React, { StrictMode } from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import * as serviceWorker from './serviceWorker';
+import { BrowserRouter } from 'react-router-dom';
+import { extendTheme } from '@chakra-ui/react';
+const theme = extendTheme({
+  fonts: {
+    heading: 'Poppins',
+    body: 'Poppins',
+    Text: 'Poppins',
+  },
+});
 
 ReactDOM.render(
   <StrictMode>
-    <ColorModeScript />
-    <App />
+    <BrowserRouter>
+      <ChakraProvider theme={theme}>
+        <ColorModeScript />
+        <App />
+      </ChakraProvider>
+    </BrowserRouter>
   </StrictMode>,
   document.getElementById('root')
 );
