@@ -43,7 +43,14 @@ function Header({ data }) {
           textAlign={{ base: 'center', md: 'left' }}
         > */}
           <Typical
-            steps={['iOS Developer 📱', 1000, 'Software Engineer 💻', 1000]}
+            steps={[
+              'iOS Developer 📱',
+              1000,
+              'Software Engineer 💻',
+              1000,
+              'YouTuber 🎥',
+              1000,
+            ]}
             loop={Infinity}
             wrapper="Text"
           />

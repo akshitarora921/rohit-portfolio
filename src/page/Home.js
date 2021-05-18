@@ -15,6 +15,7 @@ import FunFact from '../components/FunFact';
 import { db } from '../firebase';
 import Client from '../components/Client';
 import Carousel from '../components/Carousel';
+import { AspectRatio } from '@chakra-ui/layout';
 function Home() {
   const [home, setHome] = useState({});
   const [funFacts, setFunFacts] = useState([]);
@@ -106,6 +107,19 @@ function Home() {
             <Client index={index} data={data} />
           ))}
         />
+      </Box>
+      <Box align="center">
+        <AspectRatio maxW="80vw" ratio={4 / 1}>
+          <iframe
+            width="560"
+            height="315"
+            src="https://www.youtube.com/embed/SG_NzOYzTWg"
+            title="YouTube video player"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen
+          ></iframe>
+        </AspectRatio>
       </Box>
       <CustomHeading title="Fun Facts" />
       <Flex

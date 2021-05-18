@@ -22,14 +22,11 @@ function Cards({ data }) {
       _hover={{ textDecoration: 'none' }}
     >
       <Image
-        src={
-          'https://i.postimg.cc/tJ5BDxQR/Fire-Shot-Capture-006-Netflix-clone-netflix-clone-57636.png'
-          // 'https://picsum.photos/200/200'
-        }
+        src={`https://firebasestorage.googleapis.com/v0/b/personal-website-64d5d.appspot.com/o/portfolio%2F${data.imageName}?alt=media&token=01255528-7ca3-4db9-a554-f59282b13730`}
         // w="30em"
         w={{ base: '', md: '44vw' }}
         h="17em"
-        // objectFit="contain"
+        objectFit="cover"
         backgroundSize="cover"
         backgroundPosition="center"
         // transition="scale(1.1) .5sec ease-in-out"

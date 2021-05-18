@@ -16,6 +16,7 @@ import { db, storage } from '../firebase';
 import firebase from 'firebase';
 import ReCAPTCHA from 'react-google-recaptcha';
 import { useToast } from '@chakra-ui/toast';
+import { AspectRatio } from '@chakra-ui/layout';
 
 function Contact() {
   const [catchaVerified, setCaptchaVerified] = useState(false);
@@ -120,6 +121,19 @@ function Contact() {
         >
           Get in Touch
         </Text>
+      </Box>
+      <Box align="center">
+        <AspectRatio maxW="80vw" ratio={4 / 1}>
+          <iframe
+            width="560"
+            height="315"
+            src="https://www.youtube.com/embed/SG_NzOYzTWg"
+            title="YouTube video player"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen
+          ></iframe>
+        </AspectRatio>
       </Box>
       <Flex
         align={{ base: 'flex-start', md: 'center' }}
